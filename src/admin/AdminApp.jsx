@@ -3,7 +3,7 @@ import { Link, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 
 // ✅ Import paths matching your database / backend naming
-import AboutInfoForm from "./about_info/AboutInfoForm";
+import AboutInfoForm from "./about_Info/AboutInfoForm";
 import ServiceForm from "./services/ServiceForm";
 import ProjectForm from "./projects/ProjectForm";
 import NewsForm from "./news/NewsForm";
