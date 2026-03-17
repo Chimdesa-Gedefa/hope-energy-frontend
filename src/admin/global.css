@@ -1,0 +1,86 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text-main: 15 23 42; /* Slate-900 */
+    --color-text-muted: 71 85 105; /* Slate-600 */
+    
+    /* FLUID SCALE: Font size grows from 16px to 18px automatically */
+    --base-font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: var(--base-size);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: rgb(var(--color-text-main));
+    line-height: 1.7; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevents side-scrolling on mobile */
+  }
+
+  /* ============= HEADING PERFECTION ============= */
+  h1, h2, h3, h4 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em; /* Slightly tighter for that premium look */
+    line-height: 1.15;
+    text-wrap: balance; 
+    margin-bottom: 1.25rem;
+  }
+
+  /* ============= THE "FULL FILL" (JUSTIFIED) RULE ============= */
+  p {
+    margin-bottom: 1.5rem;
+    text-wrap: pretty;
+    
+    /* Activating the Justify Fill */
+    text-align: justify;
+    text-justify: inter-word; /* Prevents weird letter stretching */
+    hyphens: auto;           /* Vital for mobile so long words don't create huge gaps */
+    
+    /* Optional: On very small screens, justification can look messy. 
+       This media query keeps it clean. */
+    @media (max-width: 480px) {
+      text-align: left; 
+    }
+  }
+
+  img, picture, video, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem; /* Subtle professional touch */
+  }
+}
+
+/* ============= MODERN CONTAINER ============= */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 2.5rem); /* Responsive padding */
+}
+
+/* ============= ACCESSESIBLITY & UTILITY ============= */
+.font-editorial {
+  font-family: serif;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Eliminate "Sticky" hover effects on mobile devices */
+@media (hover: hover) {
+  .hover-effect:hover {
+    opacity: 0.8;
+  }
+}

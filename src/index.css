@@ -1,0 +1,92 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text-main: 15 23 42; /* Slate-900 */
+    --color-text-muted: 71 85 105; /* Slate-600 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: rgb(var(--color-text-main));
+    line-height: 1.7; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* PROFESSIONAL TYPOGRAPHY RULE:
+       We use 'text-wrap: balance' for headings and 'pretty' for body
+       to prevent single words sitting on a line by themselves (orphans).
+    */
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    text-wrap: balance; /* Prevents awkward title breaks */
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    text-wrap: pretty; /* Ensures the last line of a paragraph is balanced */
+    /* If you truly want the "Newspaper" straight-edge look, 
+       uncomment the line below. Use with caution:
+    */
+    /* text-align: justify; */ 
+  }
+
+  /* Editorial Accent */
+  .font-editorial {
+    font-family: serif;
+    font-style: italic;
+  }
+}
+
+/* --------------------------
+    ADVANCED TEXT UTILITIES
+--------------------------- */
+
+/* Use this class for "Justified" text only in wide desktop containers */
+.text-justify-professional {
+  text-align: justify;
+  text-justify: inter-word; /* Distributes space between words, not letters */
+  hyphens: auto; /* Required for professional justification to prevent gaps */
+}
+
+/* --------------------------
+    GLOBAL RESPONSIVE FIXES
+--------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, picture, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}

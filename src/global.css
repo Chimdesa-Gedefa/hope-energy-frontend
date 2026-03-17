@@ -1,0 +1,186 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ================= COLORS (ENERGY THEME) ================= */
+    --color-primary: 16 185 129;   /* Emerald */
+    --color-secondary: 59 130 246; /* Blue */
+    --color-accent: 251 191 36;    /* Solar Yellow */
+    
+    --color-text-main: 15 23 42;
+    --color-text-muted: 71 85 105;
+
+    /* Background Gradients */
+    --gradient-energy: linear-gradient(135deg, #10b981, #0ea5e9, #fbbf24);
+    --gradient-soft: linear-gradient(to right, rgba(16,185,129,0.05), rgba(59,130,246,0.05));
+
+    /* Glow */
+    --glow-primary: 0 0 40px rgba(16,185,129,0.25);
+
+    /* FLUID TYPOGRAPHY */
+    --base-font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: var(--base-font-size);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: rgb(var(--color-text-main));
+    line-height: 1.7;
+    background: #fcfcfc;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+
+    /* Subtle animated gradient background */
+    background-image: var(--gradient-soft);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+  }
+
+  /* ================= HEADINGS ================= */
+  h1, h2, h3, h4 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    text-wrap: balance;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+  }
+
+  /* ================= PARAGRAPH ================= */
+  p {
+    margin-bottom: 1.5rem;
+    text-wrap: pretty;
+    color: rgb(var(--color-text-muted));
+
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+
+    @media (max-width: 480px) {
+      text-align: left;
+    }
+  }
+
+  /* ================= MEDIA ================= */
+  img, picture, video, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.75rem;
+  }
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 2.5rem);
+}
+
+/* ================= PREMIUM EFFECTS ================= */
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Gradient Text (Solar Brand Style) */
+.text-gradient {
+  background: var(--gradient-energy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow Hover (Buttons / Cards) */
+.glow-hover {
+  transition: all 0.4s ease;
+}
+.glow-hover:hover {
+  box-shadow: var(--glow-primary);
+  transform: translateY(-4px);
+}
+
+/* Smooth Card */
+.card-modern {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.card-modern:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= UTILITIES ================= */
+
+/* Editorial text */
+.font-editorial {
+  font-family: serif;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Buttons (Global Standard) */
+.btn-primary {
+  background: rgb(var(--color-primary));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: rgb(5 150 105);
+  box-shadow: var(--glow-primary);
+}
+
+/* Hover Fix */
+@media (hover: hover) {
+  .hover-effect:hover {
+    opacity: 0.85;
+  }
+}
