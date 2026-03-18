@@ -136,19 +136,19 @@ export default function AboutPage() {
 <section className="relative py-16 bg-gradient-to-b from-emerald-50 to-emerald-100">
   <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
-    {/* ✅ IMAGE — Full visible, not cut, parallel, same height */}
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1 }}
-      className="rounded-3xl overflow-hidden shadow-lg h-full flex"
-    >
-      <img
-        src={about.image || "/assets/Homephoto.png"}
-        alt="Hope Energy About"
-        className="w-full h-full max-h-[450px] object-contain bg-white"
-      />
-    </motion.div>
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.2 }} // 🚀 Add this to trigger easier
+  transition={{ duration: 1 }}
+  className="rounded-3xl overflow-hidden shadow-lg h-full flex"
+>
+  <img
+    src={about.image || "/assets/Homephoto.png"} 
+    alt="Hope Energy About"
+    className="w-full h-full max-h-[450px] object-contain bg-white"
+  />
+</motion.div>
 
 
     <motion.div
