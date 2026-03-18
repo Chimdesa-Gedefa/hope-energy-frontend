@@ -6,7 +6,7 @@ import Hero from "../components/Hero";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://hope-energy-backend.onrender.com/api";
 
 /* === Accordion-style ExpandableCard === */
 const ExpandableCard = ({ title, text }) => {
