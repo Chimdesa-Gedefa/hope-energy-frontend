@@ -15,8 +15,9 @@ import Footer from "./components/Footer";
 import "./global.css";
 
 // ✅ 1. CORRECTED API SETUP
+// Ensure VITE_API_BASE in Vercel is: https://hope-energy-backend.onrender.com/api
 const API_BASE = import.meta.env.VITE_API_BASE;
-// This creates the base URL for images (e.g., https://backend.onrender.com)
+// This creates the base URL for images by removing /api (e.g., https://hope-energy-backend.onrender.com)
 const ASSET_URL = API_BASE?.replace("/api", "") || "";
 
 const sections = ["home", "about", "services", "projects", "news", "contact"];
@@ -152,7 +153,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ 3. CORRECTED DATA FETCHING (Ensuring API_BASE is used)
+  // ✅ 3. CORRECTED DATA FETCHING (Ensuring API_BASE is used correctly)
   useEffect(() => {
     let mounted = true;
     setLoading(true);
@@ -310,7 +311,6 @@ export default function Home() {
             <span className="bg-white px-8 py-3 rounded-full shadow-md border border-emerald-200">Our Services</span>
           </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {/* Logic for services simplified for length but keeping your structure */}
             {defaultServices.map((service) => (
               <motion.div key={service.id} whileHover={{ scale: 1.04 }} className="group relative bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-100 p-6 min-h-[300px]">
                 <h4 className="text-xl font-bold mb-4 text-emerald-800">{service.title}</h4>
@@ -321,7 +321,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* ✅ PROJECTS SECTION - CORRECTED IMAGE TAGS */}
+      {/* ✅ PROJECTS SECTION - FIXED IMAGE TAGS */}
       <section className="py-16 bg-white" id="projects">
         <div className="max-w-7xl mx-auto px-6">
           <h3 className="text-4xl font-extrabold text-emerald-700 mb-16 flex justify-center">
@@ -333,7 +333,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-10">
               {projects.map((p) => (
                 <div key={p.id} className="border border-emerald-100 rounded-2xl shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col">
-                  {/* Corrected src to use our new parser */}
+                  {/* Corrected src using parseImage */}
                   <img src={parseImage(p.images)} alt={p.title} className="w-full h-56 object-cover" />
                   <div className="p-6 flex flex-col h-full">
                     <h3 className="text-xl font-semibold text-emerald-700 mb-4">{p.title}</h3>
@@ -346,7 +346,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ✅ NEWS SECTION - CORRECTED IMAGE TAGS */}
+      {/* ✅ NEWS SECTION - FIXED IMAGE TAGS */}
       <section id="news" className="py-16 bg-gradient-to-r from-cyan-50 to-emerald-50">
         <div className="container mx-auto px-6">
           <h3 className="text-3xl font-bold text-emerald-700 mb-12 flex justify-center">
@@ -384,13 +384,23 @@ export default function Home() {
                 <input required placeholder="Your Name" className="w-full p-3 border rounded-xl" value={contact.name} onChange={(e) => setContact({...contact, name: e.target.value})} />
                 <input required type="email" placeholder="Your Email" className="w-full p-3 border rounded-xl" value={contact.email} onChange={(e) => setContact({...contact, email: e.target.value})} />
                 <textarea required placeholder="Message" className="w-full p-3 border rounded-xl" rows="4" value={contact.message} onChange={(e) => setContact({...contact, message: e.target.value})} />
-                <button className="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl">SEND MESSAGE</button>
+                <button className="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl shadow-lg hover:bg-emerald-500 transition-colors">SEND MESSAGE</button>
              </form>
           </div>
         </div>
       </section>
 
       <Footer />
+
+      {/* SCROLL TO TOP */}
+      {showScroll && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-600 text-white rounded-full shadow-2xl hover:bg-emerald-500 transition-all active:scale-90"
+        >
+          <ArrowUp size={24} />
+        </button>
+      )}
     </div>
   );
 }
